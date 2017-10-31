@@ -16,6 +16,7 @@
             background: rgba(38, 38, 38, 0.93);
         }
         input {
+            width: 200px;
             border-radius: 4px;
             outline: none;
             border: none;
@@ -71,15 +72,15 @@
 </head>
 <body>
 <div class="content">
-    <input type="text" placeholder="Римская цифра" id="topValue">
+    <input type="text" placeholder="Цифра стандартная" id="topValue">
     <div class="expression">
         <button onclick="getActiveButton('+')">+</button>
         <button onclick="getActiveButton('-')">-</button>
         <button onclick="getActiveButton('*')">*</button>
         <button onclick="getActiveButton('/')">/</button>
     </div>
-    <input type="text" placeholder="Римская цифра" id="bottomValue">
-    <input type="text" placeholder="Результат" id="result" disabled>
+    <input type="text" placeholder="Цифра стандартная" id="bottomValue">
+    <input type="text" placeholder="Получаем латинскую цифру" id="result" disabled>
 </div>
 <script src="main.js"></script>
 </body>
