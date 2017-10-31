@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: Lato, sans-serif, Latha;
+        }
+        #result {
+            word-spacing: 1px;
+        }
+        body {
+            background: rgba(38, 38, 38, 0.93);
+        }
+        input {
+            border-radius: 4px;
+            outline: none;
+            border: none;
+            background: rgba(105, 192, 43, 0.47);
+            margin: 5px auto;
+            color: #fff;
+            padding: 10px 15px;
+            text-transform: uppercase;
+        }
+        input:last-child {
+            border-radius: 0;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+        input::placeholder {
+            color: #fff;
+            text-transform: capitalize;
+        }
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            border-radius: 100%;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            outline:  none;
+            margin: auto 5px;
+            background: rgba(105, 192, 43, 0.47);
+            border: none;
+        }
+        button:hover {
+            transition: 0.5s;
+            border-radius: 4px;
+            background: rgba(131, 232, 50, 0.88);
+        }
+        .content {
+            position: relative;
+            display: flex;
+            flex-flow: column wrap;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .expression {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <input type="text" placeholder="Римская цифра" id="topValue">
+    <div class="expression">
+        <button onclick="getActiveButton('+')">+</button>
+        <button onclick="getActiveButton('-')">-</button>
+        <button onclick="getActiveButton('*')">*</button>
+        <button onclick="getActiveButton('/')">/</button>
+    </div>
+    <input type="text" placeholder="Римская цифра" id="bottomValue">
+    <input type="text" placeholder="Результат" id="result" disabled>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
