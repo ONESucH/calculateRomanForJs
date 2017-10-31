@@ -7,38 +7,42 @@ var topValue = document.getElementById('topValue'),
 
 /* Получаем с инпутов значение */
 function getActiveButton(data) {
-    var resultNumbers = '';
+    var resultNumbers = '',
+        regExp = '/[^0-9]/g';
 
-    if (topValue.value === '' || bottomValue.value === '') {
-        console.log('заполните оба поля');
+    if (topValue.value === '' || bottomValue.value === '' || topValue.value.match(regExp) && bottomValue.value.match(regExp)) {
+        console.log('заполните всё поля правильно');
         return false;
+    } else {
+
+        resultNumbers = eval(topValue.value + data + bottomValue.value);
+
+        console.log('переменная', resultNumbers);
+
+        var changeSymbol = renderingNumber(resultNumbers);
+
+        console.log('Изменнённая переменная', changeSymbol);
+
+        topValue.value = '';
+        bottomValue.value = '';
+        result.value = changeSymbol;
+        result.style.cssText = 'background: rgba(131, 232, 50, 0.88); \ opacity: 1; \  border-radius: 4px; color: black;';
+        setTimeout(function () {
+            result.style.cssText = 'opacity: 0.7; \ color: #fff;';
+        }, 3000);
+        resultArr = []; // Очищаем массив
+
     }
-
-    resultNumbers = eval(topValue.value + data + bottomValue.value);
-
-    console.log('переменная', resultNumbers);
-
-    var changeSymbol = renderingNumber(resultNumbers);
-
-    console.log('Изменнённая переменная', changeSymbol);
-
-    topValue.value = '';
-    bottomValue.value = '';
-    result.value = changeSymbol;
-    result.style.cssText = 'background: rgba(131, 232, 50, 0.88); \ opacity: 1; \  border-radius: 4px; color: black;';
-    setTimeout(function () {
-        result.style.cssText = 'opacity: 0.7; \ color: #fff;';
-    }, 3000);
-    resultArr = []; // Очищаем массив
 }
 
 /* рендерим числа */
 var renderingNumber = function (number) {
     console.log('входящие символы', number);
 
-    if (String(number).length < 1) {
-        console.log('Малое значение [0 - 9]');
+    console.log('----->>>>', String(number).length);
 
+    if (String(number).length === 1 && 0) {
+        console.log('Малое значение [0 - 9]');
         if (number === '1') {
             foundSymbol = 'I';
         }
@@ -66,25 +70,11 @@ var renderingNumber = function (number) {
         if (number === '9') {
             foundSymbol = 'IX';
         }
-
-        resultArr.push(foundSymbol);
+        result.value = foundSymbol;
     } else {
-        console.log('Большое значение [ > 10] ');
+        console.log('Большое значение [ >= 10] ');
         for (var letter = 0; letter < String(number).length; letter++) {
             var foundSymbol = String(number)[letter];
-
-            if (foundSymbol[letter] === '1') {
-                foundSymbol = 'I';
-            }
-            if (foundSymbol[letter] === '4') {
-                foundSymbol = 'IV';
-            }
-            if (foundSymbol[letter] === '5') {
-                foundSymbol = 'V';
-            }
-            if (foundSymbol[letter] === '9') {
-                foundSymbol = 'IX';
-            }
             if (foundSymbol[letter] === '10') {
                 foundSymbol = 'X';
             }
